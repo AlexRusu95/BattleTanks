@@ -18,11 +18,14 @@ class BATTLETANKS_API ATankPlayerController : public APlayerController
 
 public:
 
-	virtual void Tick(float DeltaTime) override;
-
 	void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+	void AimTowardsCrosshair();
 
 	ATank* GetControlledTank() const;
 
-	void AimTowardsCrosshair();
+private:
+
+	// Return an OUT parameter, true if hit landscape
+	bool GetSightRayHitLocation(FVector& HitLocation) const;
 };
