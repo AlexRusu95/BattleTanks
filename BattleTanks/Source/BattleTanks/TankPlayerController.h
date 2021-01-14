@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
 #include "GameFramework/PlayerController.h"
 #include "Tank.h"
 #include "TankPlayerController.generated.h"
@@ -17,7 +18,11 @@ class BATTLETANKS_API ATankPlayerController : public APlayerController
 
 public:
 
+	virtual void Tick(float DeltaTime) override;
+
 	void BeginPlay() override;
 
 	ATank* GetControlledTank() const;
+
+	void AimTowardsCrosshair();
 };
