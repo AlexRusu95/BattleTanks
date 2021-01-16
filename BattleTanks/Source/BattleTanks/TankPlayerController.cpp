@@ -1,12 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "DrawDebugHelpers.h"
-#include "Engine/EngineTypes.h"
 #include "Engine/World.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/WorldSettings.h"
-#include "Math/Vector2D.h"
 #include "TankPlayerController.h"
 
 #define OUT
