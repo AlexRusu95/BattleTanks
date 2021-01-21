@@ -1,7 +1,19 @@
 // Alex Rusu 2021
 
 #include "TankTrack.h"
+#include "GameFramework/Actor.h"
 #include "TankMovementComponent.h"
+
+void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+    auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
+    auto AIForwardIntention = MoveVelocity.GetSafeNormal();
+    auto ForwardThrow = FVector::DotProduct(AIForwardIntention, TankForward);
+    auto RightThrow = FVector::CrossProduct(AIForwardIntention, TankForward).Z;
+
+    IntendMoveForward(ForwardThrow);
+    IntendTurnRight(RightThrow);
+}
 
 void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
 {
