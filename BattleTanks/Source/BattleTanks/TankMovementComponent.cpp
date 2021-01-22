@@ -33,5 +33,4 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
     if (!LeftTrack || !RightTrack) {return;}
     LeftTrack->SetThrottle(Throw*2);
     RightTrack->SetThrottle(-Throw*2);
-    // TODO prevent double speed
 }
