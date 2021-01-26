@@ -23,7 +23,7 @@ void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UP
 
 void UTankTrack::SetThrottle(float Throttle)
 {
-    CurrentThrottle = FMath::Clamp<float>(CurrentThrottle + Throttle, -2.f, 2.f);
+    CurrentThrottle = FMath::Clamp<float>(CurrentThrottle + Throttle, -1.5f, 1.5f);
 }
 
 void UTankTrack::DriveTrack()
