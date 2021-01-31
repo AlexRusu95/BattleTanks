@@ -17,7 +17,7 @@ class BATTLETANKS_API ATankAIController : public AAIController
 protected:
 	// Maximum distance AI tank can come close to
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	float AcceptanceRadius = 10000;
+	float AcceptanceRadius = 8000;
 
 private:
 
