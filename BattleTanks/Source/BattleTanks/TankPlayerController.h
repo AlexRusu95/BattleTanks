@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Alex Rusu 2021
 
 #pragma once
 
@@ -18,7 +18,6 @@ class BATTLETANKS_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 
 public:
-
 	void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 
@@ -26,10 +25,15 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 	
+	UFUNCTION()
+	void OnPlayerTankDeath();
+
 private:
 
 	void AimTowardsCrosshair();
 	void ScreenLocation();
+
+	void SetPawn(APawn* InPawn);
 
 	// Return an OUT parameter, true if hit landscape
 	bool GetSightRayHitLocation(FVector& HitLocation) const;

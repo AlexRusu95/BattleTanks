@@ -1,11 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+#include "TankPlayerController.h"
 #include "Engine/World.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/WorldSettings.h"
+#include "GameFramework/PlayerController.h"
 #include "TankAimingComponent.h"
-#include "TankPlayerController.h"
+#include "Tank.h"
 
 #define OUT
 
@@ -19,6 +21,24 @@ void ATankPlayerController::BeginPlay()
     }
 }
 
+void ATankPlayerController::SetPawn(APawn* InPawn)
+{
+        Super::SetPawn(InPawn);
+    
+    if (InPawn)
+    {
+        auto PossessedTank = Cast<ATank>(InPawn);
+        if (!ensure(PossessedTank)) {return;}
+
+        // Subscribe out local method on the tank's death
+        PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankPlayerController::OnPlayerTankDeath);
+    }
+}
+
+void ATankPlayerController::OnPlayerTankDeath()
+{
+    StartSpectatingOnly();
+}
 void ATankPlayerController::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
