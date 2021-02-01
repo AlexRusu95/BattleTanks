@@ -6,6 +6,7 @@
 #include "Tank.h"
 
 class UTankAimingComponent;
+class UTankMovementComponent;
 
 void ATankAIController::BeginPlay()
 {
